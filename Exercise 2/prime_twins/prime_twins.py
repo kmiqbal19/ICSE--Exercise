@@ -12,10 +12,11 @@ def is_prime(n: int) -> bool:
 
     return True
 
+
 def prime_twins(n: int) -> list[tuple[int, int]]:
-    twin_pairs = []
-    if n <= 0:
-        return 'Not Possible to create twin pairs'
+    twin_pairs: list[tuple[int, int]] = []
+    if n == 0:
+        return []
     p = 2
     while len(twin_pairs) < n:
         if is_prime(p) and is_prime(p + 2):
@@ -23,13 +24,11 @@ def prime_twins(n: int) -> list[tuple[int, int]]:
         p += 1
     return twin_pairs
 
-
-# print(prime_twins(20))
     
-def prime_triplets(n):
-    if n <= 0:
-        return 'Not Possible to create triplets'
-    triplet_list = []
+def prime_triplets(n: int) -> list[tuple[int, int, int]]:
+    triplet_list: list[tuple[int, int, int]] = []
+    if n == 0:
+        return []
     p = 2  
     while len(triplet_list) < n:
         if is_prime(p):
