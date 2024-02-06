@@ -105,7 +105,7 @@ class LinkedNode:
         return self._next
     def set_item(self, item: any) -> None:
         self._item = item
-    def set_next(self, next: Any) -> None:
+    def set_next(self, next: any) -> None:
         self._next = next
 
 
@@ -131,9 +131,9 @@ class LinkedList:
             return self._tail.get_item()
     def add_first(self, new_item):
         new_linked_node = LinkedNode(item=new_item, next=self._head)
-        self._head= new_linked_node
         if self.is_empty():
-            self._tail = self._head
+            self._tail = new_linked_node
+        self._head = new_linked_node
         self.size += 1
     def remove_first(self):
         if self.is_empty():
