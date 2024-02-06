@@ -32,7 +32,7 @@ print(binary_search([2,5,8,9,36,45,89,98] , 36))
 print(binary_search_iteration([2,5,8,9,36,45,89,98] , 89))
 
 
-
+'''
 # IMPLEMENT LINKED_LIST DATA STRUCTURE
 
 
@@ -90,3 +90,73 @@ ll.append(158165)
 ll.delete(5)
 ll.prepend(888888)
 ll.display()
+'''
+
+# IMPLEMENT LINKED LIST DATA STRUCTURE LIKE CLASS
+
+
+class LinkedNode:
+    def __init__(self, item: any =None, next: any= None):
+        self._item = item
+        self._next = next
+    def get_item(self) -> any:
+        return self._item
+    def get_next(self) -> any:
+        return self._next
+    def set_item(self, item: any) -> None:
+        self._item = item
+    def set_next(self, next: Any) -> None:
+        self._next = next
+
+
+class LinkedList:
+    def __init__(self):
+        self._head = LinkedNode()
+        self._tail = self._head
+        self.size = 0
+        
+    def is_empty(self):
+        return self.size == 0
+    
+    def get_first(self):
+        if self.is_empty():
+            return None
+        else:
+            return self._head.get_item()
+    
+    def get_last(self):
+        if self.is_empty():
+            return None
+        else:
+            return self._tail.get_item()
+    def add_first(self, new_item):
+        new_linked_node = LinkedNode(item=new_item, next=self._head)
+        self._head= new_linked_node
+        if self.is_empty():
+            self._tail = self._head
+        self.size += 1
+    def remove_first(self):
+        if self.is_empty():
+            return None
+        out = self._head.get_item()
+        self._head = self._head.get_next()
+        self.size -= 1
+        if self.is_empty():
+            self._tail = None
+        return out
+    def add_last(self, item:any):
+        new_node = LinkedNode(item= item)
+        if self.is_empty():
+            self._head = new_node
+        else:
+            self._tail.set_next(new_node)
+        self._tail = new_node
+        self._size += 1
+
+
+
+
+
+
+
+
