@@ -153,9 +153,45 @@ class LinkedList:
         self._tail = new_node
         self._size += 1
 
+class DoubleLinkedNode:
+    def __init__(self, item=None, prev=None, next=None):
+        self._item = item
+        self._prev = prev
+        self._next = next
+    def get_item(self):
+        return self._item
+    def get_prev(self):
+        return self._prev
+    def get_next(self):
+        return self._next
+    def set_item(self, item):
+        self._item = item
+        return
+    def set_prev(self, prev_item):
+        self._prev = prev_item
+        return
+    def set_next(self, next_item):
+        self._next = next_item
+        return
 
+class DoubleLinkedList:
+    def __init__(self):
+        self._head = DoubleLinkedNode()
+        self._tail = DoubleLinkedList(prev=self._head)
+        self._head._next = self._tail
+        
+    def insert_after(self, node: DoubleLinkedNode, new_item):
+        new_node = DoubleLinkedNode(item=new_item, prev=node, next=node._next)
+        node._next._prev = new_node
+        node._next = new_node
 
-
+    def remove(self, node: DoubleLinkedNode):
+        node._prev._next = node._next
+        node._next._prev = node._prev
+        node._prev = None
+        node._next = None
+            
+    
 
 
 
